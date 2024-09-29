@@ -18,7 +18,26 @@ This project presents a deep learning framework for predicting ICU mortality usi
 - scikit-learn
 - tcn (custom library for Temporal Convolutional Networks)
 
-Install the required libraries using the following command:
+## **Dataset**
+The project uses the MIMIC-III dataset, which includes over 40,000 patient records from the ICU. To access this dataset, you must apply for permission via MIT and Beth Israel Deaconess Medical Center's Institutional Review Boards (IRBs).
 
-```bash
-pip install tensorflow pandas numpy scikit-learn tcn
+# **Usage**
+**Data Preprocessing**
+- Impute Missing Values: The dataset contains missing values which are handled using a GAN-based approach.
+Input: data01.csv (raw data)
+Output: complete_dataset.csv (imputed dataset)
+- Normalization: Perform Rolling Window Scaling on the time-series data to preserve temporal relationships during scaling.
+**Model Training**
+- Model Architecture: Combines TCN layers for temporal analysis and BiGRU layers for capturing bidirectional dependencies.
+- Training Process:
+Split the dataset into training and testing sets.
+Train the model using binary cross-entropy loss and Adam optimizer.
+Save the best model based on validation performance.
+## **Evaluation**
+Metrics used for model evaluation:
+
+-Accuracy
+-Precision
+-Recall
+-F1 Score
+-Area Under the Curve (AUC)
